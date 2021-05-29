@@ -11,9 +11,10 @@ module Ruloz
       @pins = []
       @sleep_time_remaining = 0
       @waiting_for_trigger = false
+      @internally_suspended = false
     end
   
-    def suspended? = sleeping? || waiting_for_trigger?
+    def suspended? = sleeping? || waiting_for_trigger? || internally_suspended?
   
     def suspend_sleep(time)
       @sleep_time_remaining = time
@@ -27,6 +28,15 @@ module Ruloz
       Fiber.yield
     end
     def trigger = @waiting_for_trigger = false
+
+    def internally_suspended? = @internally_suspended
+    def suspend_internal
+      @internally_suspended = true
+      Fiber.yield
+    end
+    def unsuspend_internal
+      @internally_suspended = false
+    end
   
     def step; end
   

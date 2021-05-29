@@ -9,8 +9,7 @@ module Ruloz
     end
 
     def all_step
-      components.each do |component|
-        next if component.suspended?
+      components.reject(&:suspended?).each do |component|
         if component_states[component]
           component_states[component].resume
         else
