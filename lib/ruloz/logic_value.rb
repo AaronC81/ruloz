@@ -10,6 +10,20 @@ module Ruloz
     def initialize(value)
       @value = value
     end
+
+    def self.from(value)
+      if value == 1
+        H
+      elsif value == 0
+        L
+      elsif value == true
+        H
+      elsif value == false
+        L
+      else
+        raise "don't know how to convert #{value} into a logic value"
+      end
+    end
     
     def truthy? = high?
 

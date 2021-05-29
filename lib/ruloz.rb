@@ -1,3 +1,4 @@
+require_relative 'ruloz/helpers'
 require_relative 'ruloz/logic_value'
 require_relative 'ruloz/pin'
 require_relative 'ruloz/connection'
