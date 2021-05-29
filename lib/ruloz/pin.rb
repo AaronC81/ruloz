@@ -17,6 +17,10 @@ module Ruloz
       @own_value = v
     end
 
+    def pull=(p)
+      @own_pull = p
+    end
+
     def connect(pin)
       new_connection = Connection.new
       new_connection.pins.push(*connection.pins) if connection
